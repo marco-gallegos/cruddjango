@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from apps.principal.views import inicio,crearpersona,editarpersona, eliminarpersona
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(route='', view=inicio, name='index'),
+    path(route='crearpersona', view=crearpersona, name='crearpersona'),
+    path(route='editarpersona/<int:id>', view=editarpersona, name='editarpersona'),
+    path(route='eliminarpersona/<int:id>', view=eliminarpersona, name='eliminarpersona'),
 ]

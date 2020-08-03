@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% block titulo %}formulario de contacto{% endblock titulo %}
+
+{% block body %}
+<div class="row">
+    <form method="post" id="myform">
+        {% csrf_token %}
+        {{ form }}
+    </form>
+
+    <div class="col-5">
+        <button class="btn btn-success btn-block" type="submit" form="myform" >Crear</button>
+    </div>
+</div>
+{% endblock body %}

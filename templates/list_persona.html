@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="row">
+    <h1>Crud con django</h1>
+
+    <div class="col-2">
+        <a href="/crearpersona" class="btn btn-info btn-block" >Crear</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped table-condensed table-flat table-inverse">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for persona in personas %}
+                <tr>
+                    <td scope="row">{{ persona.id }}</td>
+                    <td>{{ persona.nombre }}</td>
+                    <td>{{ persona.apellido }}</td>
+                    <td>{{ persona.correo }}</td>
+                    <td>
+                        <a name="" id="" class="btn btn-info" href="{% url 'editarpersona' persona.id %}" role="button">update</a>
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminarpersona' persona.id %}" role="button">delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock body %}
