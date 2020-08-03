@@ -16,11 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from apps.principal.views import inicio,crearpersona,editarpersona, eliminarpersona
+#importamos la clase para el crud
+from apps.principal.class_views import PersonaList, PersonaCreate, PersonaUpdate, PersonaDelete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(route='', view=inicio, name='index'),
-    path(route='crearpersona', view=crearpersona, name='crearpersona'),
-    path(route='editarpersona/<int:id>', view=editarpersona, name='editarpersona'),
-    path(route='eliminarpersona/<int:id>', view=eliminarpersona, name='eliminarpersona'),
+    #path(route='', view=inicio, name='index'),
+    path(route='', view=PersonaList.as_view(), name='index'),
+    #path(route='crearpersona', view=crearpersona, name='crearpersona'),
+    path(route='crearpersona', view=PersonaCreate.as_view(), name='crearpersona'),
+    #path(route='editarpersona/<int:id>', view=editarpersona, name='editarpersona'),
+    path(route='editarpersona/<int:pk>', view=PersonaUpdate.as_view(), name='editarpersona'),
+    #path(route='eliminarpersona/<int:id>', view=eliminarpersona, name='eliminarpersona'),
+    path(route='eliminarpersona/<int:pk>', view=PersonaDelete.as_view(), name='eliminarpersona'),
 ]

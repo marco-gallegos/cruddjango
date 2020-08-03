@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block title %}a oc
+{% endblock title %}
+
+{% block body %}
+
+<h1>desea eliminar a : {{ object }}</h1>
+
+<div class="row">
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success" >Confirmar</button>
+    </form>
+</div>
+
+
+<a href="{% url 'index' %}" class="btn btn-info" >Regresar</a>
+
+
+{% endblock body %}
